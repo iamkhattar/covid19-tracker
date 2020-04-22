@@ -16,6 +16,7 @@ program
 program
   .command("slugs")
   .alias("sg")
+  .alias("slug")
   .description("Slugs for each country")
   .action(() => {
     cli.printSlugs();

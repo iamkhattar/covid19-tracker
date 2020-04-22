@@ -29,9 +29,9 @@ const getSlugs = async () => {
 
 const getCountrySummary = async (slug) => {
   try {
-    var url = "";
-    console.log(url);
-    //const res = await axios.get
+    var url = "https://api.covid19api.com/country/" + slug;
+    const res = await axios.get(url);
+    return res.data;
   } catch (err) {
     console.log(chalk.red.bold("An Error Occured!!"));
   }

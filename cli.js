@@ -41,7 +41,8 @@ const printSlugs = async () => {
 };
 
 const printCountrySummary = async (slug) => {
-  api.getCountrySummary(slug);
+  const res = await api.getCountrySummary(slug);
+  console.log(res);
 };
 
 module.exports.printSummary = printSummary;
