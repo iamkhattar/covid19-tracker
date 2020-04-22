@@ -45,6 +45,12 @@ const printCountrySummary = async (slug) => {
   console.log(res);
 };
 
+const printCountryLive = async (slug) => {
+  const res = await api.getCountryLive(slug);
+  console.log(res);
+}
+
 module.exports.printSummary = printSummary;
 module.exports.printSlugs = printSlugs;
 module.exports.printCountrySummary = printCountrySummary;
+module.exports.printCountryLive = printCountryLive;
