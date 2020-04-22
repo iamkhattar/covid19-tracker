@@ -1,6 +1,6 @@
 {
   "name": "coronavirus-global",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A tool to view COVID-19 statistics from the command line.",
   "main": "index.js",
   "scripts": {
