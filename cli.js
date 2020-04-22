@@ -43,7 +43,20 @@ const printSlugs = async () => {
 
 const printCountrySummary = async (slug) => {
   const res = await api.getCountrySummary(slug);
-  for (var i = 0; i < res.length; i++) {}
+  var confirmed = [];
+  for (var i = 0; i < res.length; i++) {
+    if (!confirmed.includes([i, res[i].Confirmed]))
+      confirmed.push([i, res[i].Confirmed]);
+  }
+  console.log(
+    babar(confirmed, {
+      color: "green",
+      width: 90,
+      height: 10,
+      yFractions: 0,
+      caption: "Confirmed Cases in " + slug,
+    })
+  );
 };
 
 module.exports.printSummary = printSummary;
