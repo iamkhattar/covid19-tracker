@@ -27,7 +27,7 @@ program
   .alias("c")
   .description("Cases for country associated with the <slug>")
   .action((slug) => {
-    const countrySlug = slug.toLowerCase();
+    var countrySlug = slug.toLowerCase();
     cli.printCountrySummary(countrySlug);
   });
 
