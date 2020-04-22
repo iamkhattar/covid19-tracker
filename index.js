@@ -31,4 +31,14 @@ program
     cli.printCountrySummary(countrySlug);
   });
 
+program
+  .command("country-live <slug>")
+  .alias("cl").alias("live")
+  .description("Returns live covid information for <slug>")
+  .action((slug)=>{
+    const countrySlug = slug.toLowerCase();
+    cli.printCountryLive(countrySlug);
+  });
+
+
 program.parse(process.argv);
