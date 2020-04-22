@@ -1,5 +1,5 @@
 {
-  "name": "covid19-tracker",
+  "name": "@iamkhattar/covid19-tracker",
   "version": "1.0.0",
   "description": "A tool to view COVID-19 statistics from the command line.",
   "main": "index.js",
