@@ -33,6 +33,14 @@ coronavirus-global country united-kingdom
 coronavirus-global help
 ```
 
+# Contributers
+
+[//]: contributor-faces
+
+<a href="https://github.com/iamkhattar"><img src="https://avatars3.githubusercontent.com/u/56852615?s=400&u=656d6befdb16f2be60c9c1f80456509a9dde69c4&v=4" title="iamkhattar" width="80" height="80"></a>
+
+[//]: contributor-faces
+
 # License
 
 MIT
