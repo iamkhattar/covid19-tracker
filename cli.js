@@ -1,7 +1,7 @@
 const api = require("./api");
 const chalk = require("chalk");
 const Table = require("cli-table");
-const babar = require("babar");
+const Chart = require("cli-chart");
 
 /**
  * Prints global Covid19 Summary in the command Line
@@ -43,20 +43,23 @@ const printSlugs = async () => {
 
 const printCountrySummary = async (slug) => {
   const res = await api.getCountrySummary(slug);
-  var confirmed = [];
-  for (var i = 0; i < res.length; i++) {
-    if (!confirmed.includes([i, res[i].Confirmed]))
-      confirmed.push([i, res[i].Confirmed]);
+
+  var chart = new Chart({
+    xlabel: "snausages/hr",
+    ylabel: "dog\nhappiness",
+    direction: "y",
+    width: 50,
+    height: 20,
+    lmargin: 0,
+    step: 2,
+  });
+
+  for (currentData of res) {
+    console.log(currentData.Confirmed);
+    chart.addBar(currentData.Confirmed);
   }
-  console.log(
-    babar(confirmed, {
-      color: "green",
-      width: 90,
-      height: 10,
-      yFractions: 0,
-      caption: "Confirmed Cases in " + slug,
-    })
-  );
+  chart.draw();
+  process.exit();
 };
 
 module.exports.printSummary = printSummary;
