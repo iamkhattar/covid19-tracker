@@ -28,9 +28,18 @@ const printSummary = async () => {
   console.log(table.toString());
 };
 
+/**
+ * Prints Slugs for Different Countries
+ */
 const printSlugs = async () => {
   const res = await api.getSlugs();
-  console.log(res);
+  var table = new Table({ head: ["Country", "Slug"] });
+
+  for (const currentCountry of res) {
+    table.push([currentCountry.Country, currentCountry.Slug]);
+  }
+
+  console.log(table.toString());
 };
 
 module.exports.printSummary = printSummary;
