@@ -53,6 +53,11 @@ const printCountrySummary = async (slug) => {
   console.log(chalk.bold.blue("Confirmed Cases: " + confirmedCases));
   console.log("");
   printConfirmedCasesGraph(res);
+
+  console.log("");
+  console.log(chalk.bold.blue("Recovered: " + confirmedRecovered));
+  console.log("");
+  printRecoveredGraph(res);
   process.exit();
 };
 
@@ -71,9 +76,34 @@ const printConfirmedCasesGraph = async (res) => {
     width: Math.floor(confirmationBarNumbers.length * 2.1),
     step: 2,
   });
+  
 
   for (currentBar of confirmationBarNumbers) {
     chart.addBar(currentBar);
+  }
+
+  await chart.draw();
+};
+
+const printRecoveredGraph = async (res) => {
+  var recoveredBarNumbers = [];
+  for (var i = Math.floor(res.length / 1.75); i < res.length; i += 2) {
+    recoveredBarNumbers.push(res[i].Recovered);
+  }
+
+  var chart = new Chart({
+    xlabel: "Time",
+    ylabel: "Cases",
+    direction: "y",
+    height: 12,
+    lmargin: 10,
+    width: Math.floor(recoveredBarNumbers.length * 2.1),
+    step: 2,
+  });
+  
+
+  for (currentBar of recoveredBarNumbers) {
+    chart.addBar(currentBar, 'green');
   }
 
   await chart.draw();
