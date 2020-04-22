@@ -28,4 +28,10 @@ const printSummary = async () => {
   console.log(table.toString());
 };
 
+const printSlugs = async () => {
+  const res = await api.getSlugs();
+  console.log(res);
+};
+
 module.exports.printSummary = printSummary;
+module.exports.printSlugs = printSlugs;

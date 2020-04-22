@@ -12,4 +12,17 @@ const getSummary = async () => {
   }
 };
 
+/**
+ * Gets Country Slugs from the Covid19 API
+ */
+const getSlugs = async () => {
+  try {
+    const res = await axios.get("https://api.covid19api.com/countries");
+    return res.data;
+  } catch (err) {
+    return err;
+  }
+};
+
 module.exports.getSummary = getSummary;
+module.exports.getSlugs = getSlugs;

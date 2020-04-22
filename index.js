@@ -13,4 +13,12 @@ program
     cli.printSummary();
   });
 
+program
+  .command("slugs")
+  .alias("sg")
+  .description("Slugs for each country")
+  .action(() => {
+    cli.printSlugs();
+  });
+
 program.parse(process.argv);
