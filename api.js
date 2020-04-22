@@ -39,7 +39,11 @@ const getSlugs = async () => {
   }
 };
 
-const getCountrySummary = async (slug, firstDate) => {
+/**
+ * Gets Country Summary data from the Covid19 API
+ * @param {String} slug this is the unique identifier for a country
+ */
+const getCountrySummary = async (slug) => {
   try {
     var url = "https://api.covid19api.com/total/dayone/country/" + slug;
     const res = await axios.get(url);
@@ -49,6 +53,10 @@ const getCountrySummary = async (slug, firstDate) => {
   }
 };
 
+/**
+ * Gets Live Country Statistics from the Covid19 API
+ * @param {*} slug this is the unique identifier for a country
+ */
 const getCountryLive = async (slug) =>{
   try{
     var url = "https://api.covid19api.com/live/country/"+slug+"/status/confirmed";
@@ -60,7 +68,10 @@ const getCountryLive = async (slug) =>{
     console.log(chalk.red.bold("An Error Occured!!"));
   }
 }
-
+/**
+ * Totals all case data for a country
+ * @param {Object} obj this is the object containing the statistics for a country
+ */
 function totalLiveCaes(obj){
   var confirmed = 0;
   var deaths = 0;
@@ -84,6 +95,10 @@ function totalLiveCaes(obj){
 
 }
 
+/**
+ * Sorts countries into alphabetical order
+ * @param {String} property this is the key for the object
+ */
 function sortSlugs(property) {
   var sortOrder = 1;
   if (property[0] === "-") {

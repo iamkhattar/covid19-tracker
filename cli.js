@@ -34,13 +34,17 @@ const printSummary = async () => {
  */
 const printSlugs = async () => {
   const res = await api.getSlugs();
-  var table = new Table({ head: ["Country", "Slug"] });
+  var table = new Table({ head: [chalk.white.bold("Country"), chalk.white.bold("Slug")]});
   for (const currentCountry of res) {
     table.push([currentCountry.Country, currentCountry.Slug]);
   }
   console.log(table.toString());
 };
 
+/**
+ * displays the stats in bar graph form for the specified country
+ * @param {String} slug the unique identifier for a country
+ */
 const printCountrySummary = async (slug) => {
   const {
     confirmedCases,
@@ -63,6 +67,10 @@ const printCountrySummary = async (slug) => {
   process.exit();
 };
 
+/**
+ * prints a graph for all confirmed cases in the terminal
+ * @param {Array} res data gathered from api query
+ */
 const printConfirmedCasesGraph = async (res) => {
   var confirmationBarNumbers = [];
   for (var i = Math.floor(res.length / 1.75); i < res.length; i += 2) {
@@ -87,6 +95,10 @@ const printConfirmedCasesGraph = async (res) => {
   chart.draw();
 };
 
+/**
+ * prints a graph for all confirmed deaths in the terminal
+ * @param {Array} res data gathered from api query
+ */
 const printDeathsGraph = async (res) => {
   var deathBarNumbers = [];
   for (var i = Math.floor(res.length / 1.75); i < res.length; i += 2) {
@@ -110,6 +122,10 @@ const printDeathsGraph = async (res) => {
   chart.draw();
 };
 
+/**
+ * prints a graph for all recovered cases in the terminal
+ * @param {*} res data gathered from api query
+ */
 const printRecoveredGraph = async (res) => {
   var recoveredBarNumbers = [];
   for (var i = Math.floor(res.length / 1.75); i < res.length; i += 2) {
@@ -134,6 +150,9 @@ const printRecoveredGraph = async (res) => {
   await chart.draw();
 };
 
+/**
+ * displays the stats of all countries in graph form
+ */
 const printAllCountriesSummary = async () =>{
 var table = new Table({
   head: [chalk.white.bold('Country'), chalk.blue.bold('Active Cases'),  chalk.red.bold('Deaths'),  chalk.green.bold('Recovered')]
