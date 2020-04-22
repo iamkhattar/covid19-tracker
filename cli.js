@@ -52,18 +52,15 @@ const printCountrySummary = async (slug) => {
   console.log(chalk.bold.blue("Confirmed Cases: " + confirmedCases));
   console.log("");
   printConfirmedCasesGraph(res);
-<<<<<<< HEAD
 
   console.log("");
   console.log(chalk.bold.blue("Recovered: " + confirmedRecovered));
   console.log("");
   printRecoveredGraph(res);
-=======
   console.log("");
   console.log(chalk.bold.red("Confirmed Deaths: " + confirmedDeaths));
   console.log("");
   printDeathsGraph(res);
->>>>>>> 4506f375344d4862b594fe2c63d64a0d95edd24f
   process.exit();
 };
 
