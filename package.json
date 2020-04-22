@@ -8,7 +8,10 @@
     "postinstall": "node postinstall.js"
   },
   "bin": "./bin/coronavirus-global.js",
-  "author": "",
+  "author": {
+    "name": "Shivam Khattar",
+    "email": "shivamkhattar1@gmail.com"
+  },
   "contributors": [
     {
       "name": "Shivam Khattar",
@@ -27,5 +30,15 @@
     "cli-table": "^0.3.1",
     "commander": "^5.0.0"
   },
-  "homepage": "https://github.com/iamkhattar/covid19-tracker#readme"
+  "keywords": [
+    "covid19",
+    "coronavirus",
+    "cli",
+    "tracker",
+    "covid19-tracker",
+    "coronavirus tracker",
+    "coronavirus-tracker",
+    "covid19 tracker"
+  ],
+  "homepage": "https://github.com/iamkhattar/coronavirus-global#readme"
 }
