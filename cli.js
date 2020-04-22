@@ -1,6 +1,7 @@
 const api = require("./api");
 const chalk = require("chalk");
 const Table = require("cli-table");
+const babar = require("babar");
 
 /**
  * Prints global Covid19 Summary in the command Line
@@ -42,7 +43,7 @@ const printSlugs = async () => {
 
 const printCountrySummary = async (slug) => {
   const res = await api.getCountrySummary(slug);
-  console.log(res);
+  for (var i = 0; i < res.length; i++) {}
 };
 
 module.exports.printSummary = printSummary;
