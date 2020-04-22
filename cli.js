@@ -46,18 +46,24 @@ const printCountrySummary = async (slug) => {
     confirmedCases,
     confirmedDeaths,
     confirmedRecovered,
-    conifrmedActive,
   } = await api.getCountryLive(slug);
   const res = await api.getCountrySummary(slug);
   console.log("");
   console.log(chalk.bold.blue("Confirmed Cases: " + confirmedCases));
   console.log("");
   printConfirmedCasesGraph(res);
+<<<<<<< HEAD
 
   console.log("");
   console.log(chalk.bold.blue("Recovered: " + confirmedRecovered));
   console.log("");
   printRecoveredGraph(res);
+=======
+  console.log("");
+  console.log(chalk.bold.red("Confirmed Deaths: " + confirmedDeaths));
+  console.log("");
+  printDeathsGraph(res);
+>>>>>>> 4506f375344d4862b594fe2c63d64a0d95edd24f
   process.exit();
 };
 
@@ -82,7 +88,30 @@ const printConfirmedCasesGraph = async (res) => {
     chart.addBar(currentBar);
   }
 
-  await chart.draw();
+  chart.draw();
+};
+
+const printDeathsGraph = async (res) => {
+  var deathBarNumbers = [];
+  for (var i = Math.floor(res.length / 1.75); i < res.length; i += 2) {
+    deathBarNumbers.push(res[i].Deaths);
+  }
+
+  var chart = new Chart({
+    xlabel: "Time",
+    ylabel: "Deaths",
+    direction: "y",
+    height: 12,
+    lmargin: 10,
+    width: Math.floor(deathBarNumbers.length * 2.1),
+    step: 2,
+  });
+
+  for (currentBar of deathBarNumbers) {
+    chart.addBar(currentBar, "red");
+  }
+
+  chart.draw();
 };
 
 const printRecoveredGraph = async (res) => {
