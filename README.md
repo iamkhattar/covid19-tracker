@@ -33,7 +33,7 @@ coronavirus-global country united-kingdom
 coronavirus-global help
 ```
 
-# Contributers
+# Contributors
 
 [//]: contributor-faces
 
