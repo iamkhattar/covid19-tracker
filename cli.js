@@ -134,6 +134,18 @@ const printRecoveredGraph = async (res) => {
   await chart.draw();
 };
 
+const printAllCountriesSummary = async () =>{
+var table = new Table({
+  head: [chalk.white.bold('Country'), chalk.blue.bold('Active Cases'),  chalk.red.bold('Deaths'),  chalk.green.bold('Recovered')]
+});
+  const res = await api.getAllCountrySummary();
+  for(country of res){
+    table.push([ country.Country, chalk.blue(country.TotalConfirmed), chalk.red(country.TotalDeaths), chalk.green(country.TotalRecovered)]);
+  }
+  console.log(table.toString());
+};
+
 module.exports.printSummary = printSummary;
 module.exports.printSlugs = printSlugs;
 module.exports.printCountrySummary = printCountrySummary;
+module.exports.printAllCountriesSummary= printAllCountriesSummary;

@@ -14,6 +14,18 @@ const getSummary = async () => {
 };
 
 /**
+ * Gets Global Summary from the Covid19 API
+ */
+const getAllCountrySummary = async () => {
+  try {
+    const res = await axios.get("https://api.covid19api.com/summary");
+    return res.data.Countries;
+  } catch (err) {
+    console.log(chalk.red.bold("An Error Occured!!"));
+  }
+};
+
+/**
  * Gets Country Slugs from the Covid19 API
  */
 const getSlugs = async () => {
@@ -91,3 +103,4 @@ module.exports.getSummary = getSummary;
 module.exports.getSlugs = getSlugs;
 module.exports.getCountrySummary = getCountrySummary;
 module.exports.getCountryLive = getCountryLive;
+module.exports.getAllCountrySummary = getAllCountrySummary;

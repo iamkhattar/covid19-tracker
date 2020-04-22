@@ -31,4 +31,12 @@ program
     cli.printCountrySummary(countrySlug);
   });
 
+program
+  .command("all-countries")
+  .alias("ac")
+  .description("Stats for all countries")
+  .action(() => {
+    cli.printAllCountriesSummary();
+  });
+
 program.parse(process.argv);
