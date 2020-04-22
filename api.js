@@ -14,7 +14,7 @@ const getSummary = async () => {
 };
 
 /**
- * Gets Global Summary from the Covid19 API
+ * Gets Country Summary from the Covid19 API
  */
 const getAllCountrySummary = async () => {
   try {
@@ -64,7 +64,7 @@ const getCountryLive = async (slug) =>{
     const data = res.data;
 
     return totalLiveCaes(data);
-  } catch(err){
+  } catch (err) {
     console.log(chalk.red.bold("An Error Occured!!"));
   }
 }
@@ -78,7 +78,7 @@ function totalLiveCaes(obj){
   var recovered = 0;
   var active = 0;
 
-  obj.forEach(function(d){
+  obj.forEach(function (d) {
     confirmed += d.Confirmed;
     deaths += d.Deaths;
     recovered += d.Recovered;
@@ -89,10 +89,9 @@ function totalLiveCaes(obj){
     confirmedCases: confirmed,
     confirmedDeaths: deaths,
     confirmedRecovered: recovered,
-    conifrmedActive: active
+    conifrmedActive: active,
   };
   return stats;
-
 }
 
 /**
