@@ -1,12 +1,14 @@
-const program = require("commander");
-const cli = require("./cli");
+#!/usr/bin/env node
+
+const { program } = require("commander");
+const pkg = require("../package.json");
+
+const cli = require("../cli");
 
 /**
  * Program Version and Description
  */
-program
-  .version("1.0.0")
-  .description("A tool to view COVID-19 statistics from the command line.");
+program.version(pkg.version).description(pkg.description);
 
 /**
  * @usage covid19-tracker summary|s

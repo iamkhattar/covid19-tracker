@@ -1,12 +1,13 @@
 {
-  "name": "@iamkhattar/covid19-tracker",
-  "version": "1.0.8",
+  "name": "coronavirus-global",
+  "version": "1.0.0",
   "description": "A tool to view COVID-19 statistics from the command line.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"No test specified\"",
     "postinstall": "node postinstall.js"
   },
+  "bin": "./bin/coronavirus-global.js",
   "author": "",
   "contributors": [
     {
