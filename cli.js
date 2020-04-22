@@ -42,13 +42,21 @@ const printSlugs = async () => {
 };
 
 const printCountrySummary = async (slug) => {
+  const {
+    confirmedCases,
+    confirmedDeaths,
+    confirmedRecovered,
+    conifrmedActive,
+  } = await api.getCountryLive(slug);
   const res = await api.getCountrySummary(slug);
+  console.log("");
+  console.log(chalk.bold.blue("Confirmed Cases: " + confirmedCases));
+  console.log("");
   printConfirmedCasesGraph(res);
+  process.exit();
 };
 
 const printConfirmedCasesGraph = async (res) => {
-  console.log(chalk.bold.blue("Confirmed Cases: "));
-  console.log("");
   var confirmationBarNumbers = [];
   for (var i = Math.floor(res.length / 1.75); i < res.length; i += 2) {
     confirmationBarNumbers.push(res[i].Confirmed);
@@ -71,12 +79,6 @@ const printConfirmedCasesGraph = async (res) => {
   await chart.draw();
 };
 
-const printCountryLive = async (slug) => {
-  const res = await api.getCountryLive(slug);
-  console.log(res);
-};
-
 module.exports.printSummary = printSummary;
 module.exports.printSlugs = printSlugs;
 module.exports.printCountrySummary = printCountrySummary;
-module.exports.printCountryLive = printCountryLive;
