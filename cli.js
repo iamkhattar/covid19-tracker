@@ -45,18 +45,22 @@ const printCountrySummary = async (slug) => {
   const res = await api.getCountrySummary(slug);
 
   var chart = new Chart({
-    xlabel: "snausages/hr",
-    ylabel: "dog\nhappiness",
+    xlabel: "Time",
+    ylabel: "Cases",
     direction: "y",
     width: 50,
     height: 20,
-    lmargin: 0,
+    lmargin: 10,
     step: 2,
   });
 
+  var confirmed = [];
   for (currentData of res) {
-    console.log(currentData.Confirmed);
-    chart.addBar(currentData.Confirmed);
+    if (!confirmed.includes(currentData.Confirmed)) {
+      console.log(currentData.Confirmed);
+      chart.addBar(currentData.Confirmed);
+      confirmed.push(currentData.Confirmed);
+    }
   }
   chart.draw();
   process.exit();
