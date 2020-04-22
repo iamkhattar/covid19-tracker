@@ -3,9 +3,9 @@ console.log(
   "+----------------------------------------------------------------+"
 );
 console.log(
-  "|                         " +
-    chalk.bold.green("covid19-tracker") +
-    "                        |"
+  "|                       " +
+    chalk.bold.green("coronavirus-global") +
+    "                       |"
 );
 console.log(
   "+----------------------------------------------------------------+"
