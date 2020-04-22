@@ -27,9 +27,9 @@ const getSlugs = async () => {
   }
 };
 
-const getCountrySummary = async (slug) => {
+const getCountrySummary = async (slug, firstDate) => {
   try {
-    var url = "https://api.covid19api.com/country/" + slug;
+    var url = "https://api.covid19api.com/total/dayone/country/" + slug;
     const res = await axios.get(url);
     return res.data;
   } catch (err) {
