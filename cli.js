@@ -34,13 +34,16 @@ const printSummary = async () => {
 const printSlugs = async () => {
   const res = await api.getSlugs();
   var table = new Table({ head: ["Country", "Slug"] });
-
   for (const currentCountry of res) {
     table.push([currentCountry.Country, currentCountry.Slug]);
   }
-
   console.log(table.toString());
+};
+
+const printCountrySummary = async (slug) => {
+  api.getCountrySummary(slug);
 };
 
 module.exports.printSummary = printSummary;
 module.exports.printSlugs = printSlugs;
+module.exports.printCountrySummary = printCountrySummary;

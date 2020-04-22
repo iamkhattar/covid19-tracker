@@ -21,4 +21,13 @@ program
     cli.printSlugs();
   });
 
+program
+  .command("country <slug>")
+  .alias("c")
+  .description("Cases for country associated with the <slug>")
+  .action((slug) => {
+    const countrySlug = slug.toLowerCase();
+    cli.printCountrySummary(countrySlug);
+  });
+
 program.parse(process.argv);
