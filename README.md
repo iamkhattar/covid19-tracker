@@ -11,7 +11,7 @@ npm install coronavirus-global
 # Usage
 
 ```bash
-covid19-tracker --help
+coronavirus-global --help
 
 
 Options:
