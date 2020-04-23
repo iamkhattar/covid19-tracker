@@ -1,6 +1,6 @@
 # 🦠 - coronavirus-global
 
-coronavirus-global is tool to view COVID-19 statistics from the command line.
+coronavirus-global is a tool to view COVID-19 statistics from the command line.
 
 # Install
 
