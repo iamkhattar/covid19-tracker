@@ -2,6 +2,10 @@
 
 coronavirus-global is a tool to view COVID-19 statistics from the command line.
 
+# Documentation
+
+Visit out [Documentation Page](https://iamkhattar.github.io/coronavirus-global/) to view detailed documentation for coronavirus-global.
+
 # Install
 
 ```bash
