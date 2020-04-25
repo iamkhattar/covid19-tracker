@@ -34,7 +34,9 @@ const printSummary = async () => {
  */
 const printSlugs = async () => {
   const res = await api.getSlugs();
-  var table = new Table({ head: [chalk.white.bold("Country"), chalk.white.bold("Slug")]});
+  var table = new Table({
+    head: [chalk.white.bold("Country"), chalk.white.bold("Slug")],
+  });
   for (const currentCountry of res) {
     table.push([currentCountry.Country, currentCountry.Slug]);
   }
@@ -46,24 +48,24 @@ const printSlugs = async () => {
  * @param {String} slug the unique identifier for a country
  */
 const printCountrySummary = async (slug) => {
+  const countrySummary = await api.getCountrySummary(slug);
   const {
     confirmedCases,
     confirmedDeaths,
     confirmedRecovered,
-  } = await api.getCountryLive(slug);
-  const res = await api.getCountrySummary(slug);
+  } = await api.getCountryLive(countrySummary);
   console.log("");
   console.log(chalk.bold.blue("Confirmed Cases: " + confirmedCases));
   console.log("");
-  printConfirmedCasesGraph(res);
+  printConfirmedCasesGraph(countrySummary);
   console.log("");
   console.log(chalk.bold.green("Recovered Cases: " + confirmedRecovered));
   console.log("");
-  printRecoveredGraph(res);
+  printRecoveredGraph(countrySummary);
   console.log("");
   console.log(chalk.bold.red("Confirmed Deaths: " + confirmedDeaths));
   console.log("");
-  printDeathsGraph(res);
+  printDeathsGraph(countrySummary);
   process.exit();
 };
 
@@ -86,7 +88,6 @@ const printConfirmedCasesGraph = async (res) => {
     width: Math.floor(confirmationBarNumbers.length * 2.1),
     step: 2,
   });
-  
 
   for (currentBar of confirmationBarNumbers) {
     chart.addBar(currentBar);
@@ -141,10 +142,9 @@ const printRecoveredGraph = async (res) => {
     width: Math.floor(recoveredBarNumbers.length * 2.1),
     step: 2,
   });
-  
 
   for (currentBar of recoveredBarNumbers) {
-    chart.addBar(currentBar, 'green');
+    chart.addBar(currentBar, "green");
   }
 
   await chart.draw();
@@ -153,13 +153,23 @@ const printRecoveredGraph = async (res) => {
 /**
  * displays the stats of all countries in graph form
  */
-const printAllCountriesSummary = async () =>{
-var table = new Table({
-  head: [chalk.white.bold('Country'), chalk.blue.bold('Active Cases'),  chalk.red.bold('Deaths'),  chalk.green.bold('Recovered')]
-});
+const printAllCountriesSummary = async () => {
+  var table = new Table({
+    head: [
+      chalk.white.bold("Country"),
+      chalk.blue.bold("Active Cases"),
+      chalk.red.bold("Deaths"),
+      chalk.green.bold("Recovered"),
+    ],
+  });
   const res = await api.getAllCountrySummary();
-  for(country of res){
-    table.push([ country.Country, chalk.blue(country.TotalConfirmed), chalk.red(country.TotalDeaths), chalk.green(country.TotalRecovered)]);
+  for (country of res) {
+    table.push([
+      country.Country,
+      chalk.blue(country.TotalConfirmed),
+      chalk.red(country.TotalDeaths),
+      chalk.green(country.TotalRecovered),
+    ]);
   }
   console.log(table.toString());
 };
@@ -167,4 +177,4 @@ var table = new Table({
 module.exports.printSummary = printSummary;
 module.exports.printSlugs = printSlugs;
 module.exports.printCountrySummary = printCountrySummary;
-module.exports.printAllCountriesSummary= printAllCountriesSummary;
+module.exports.printAllCountriesSummary = printAllCountriesSummary;

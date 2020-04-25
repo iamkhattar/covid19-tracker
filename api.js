@@ -55,34 +55,30 @@ const getCountrySummary = async (slug) => {
 
 /**
  * Gets Live Country Statistics from the Covid19 API
- * @param {*} slug this is the unique identifier for a country
+ * @param {*} countrySummary response from querying getCountrySummary()
  */
-const getCountryLive = async (slug) =>{
-  try{
-    var url = "https://api.covid19api.com/live/country/"+slug+"/status/confirmed";
-    const res = await axios.get(url);
-    const data = res.data;
-
-    return totalLiveCaes(data);
-  } catch (err) {
-    console.log(chalk.red.bold("An Error Occured!!"));
-  }
-}
+const getCountryLive = async (countrySummary) => {
+  return totalLiveCaes(countrySummary);
+};
 /**
  * Totals all case data for a country
- * @param {Object} obj this is the object containing the statistics for a country
+ * @param {Object} obj this is the object containing the history statistics for a country
  */
-function totalLiveCaes(obj){
+function totalLiveCaes(obj) {
   var confirmed = 0;
   var deaths = 0;
   var recovered = 0;
   var active = 0;
 
-  obj.forEach(function (d) {
-    confirmed += d.Confirmed;
-    deaths += d.Deaths;
-    recovered += d.Recovered;
-    active += d.Active;
+  var date = Date.parse("1 January 1970");
+
+  obj.forEach((currentObject) => {
+    if (new Date(currentObject.Date) > new Date(date)) {
+      confirmed = currentObject.Confirmed;
+      deaths = currentObject.Deaths;
+      recovered = currentObject.Recovered;
+      active = currentObject.active;
+    }
   });
 
   var stats = {
