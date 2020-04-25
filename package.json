@@ -42,5 +42,9 @@
     "coronavirus-tracker",
     "covid19 tracker"
   ],
-  "homepage": "https://iamkhattar.github.io/coronavirus-global/"
+  "homepage": "https://iamkhattar.github.io/coronavirus-global/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iamkhattar/coronavirus-global"
+  }
 }
