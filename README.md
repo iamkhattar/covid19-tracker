@@ -37,6 +37,10 @@ coronavirus-global country united-kingdom
 coronavirus-global help
 ```
 
+# Technology Stack
+
+<img src="./assets/nodejs.png" width="80" height="80" title="Node.js"> <img src="./assets/javascript.png" width="80" height="80" title="JavaScript"> <img src="./assets/npm.png" width="80" height="80" title="NPM"> <img src="./assets/vscode.png" width="80" height="80" title="Visual Studio Code"> <img src="./assets/git.png" width="80" height="80" title="Git"> <img src="./assets/github.png" width="80" height="80" title="Github">
+
 # Contributors
 
 [//]: contributor-faces
